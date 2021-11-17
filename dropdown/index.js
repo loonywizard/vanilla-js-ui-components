@@ -10,11 +10,7 @@ function addEventListenersForDropdown(dropdown) {
   if (!dropdownButton || !dropdownContent) return
 
   dropdownButton.addEventListener('click', function onDropdownButtonClick() {
-    if (dropdownContent.classList.contains('dropdown-content-open')) {
-      dropdownContent.classList.remove('dropdown-content-open')
-    } else {
-      dropdownContent.classList.add('dropdown-content-open')
-    }
+    dropdownContent.classList.toggle('dropdown-content-open')
   })
 }
 
