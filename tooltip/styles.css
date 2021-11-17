@@ -37,18 +37,16 @@
   /* style tooltip */
   background: rgba(0, 0, 0, 0.9);
   color: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
   height: 24px;
   padding: 0 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   
-  /* stretch tooltip by content width */
-  min-width: max-content;
+  /* TODO: stretch tooltip by content width */
+  width: 400px;
 }
 
-/* tooltip arrow */
 .tooltip:after {
   content: "";
   
@@ -65,4 +63,33 @@
 .tooltip:hover:after {
   visibility: visible;
   opacity: 1;
+}
+
+/* additional styles for right & left positioned tooltips */
+.tooltip-right:before,
+.tooltip-right:after {
+  top: 50%;
+  left: calc(100% + 15px);
+  transform: translateY(-50%);
+}
+
+.tooltip-right:after {
+  left: calc(100% + 15px - 12px);
+
+  /* top - right - bottom - left */
+  border-color: transparent rgba(0, 0, 0, 0.9) transparent transparent;
+}
+
+.tooltip-left:before,
+.tooltip-left:after {
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%) translateX(-100%);
+}
+
+.tooltip-left:after {
+  left: -3px;
+
+  /* top - right - bottom - left */
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.9);
 }
