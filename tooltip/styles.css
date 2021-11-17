@@ -39,19 +39,20 @@
   /* add content from data-tooltip-text attribute */
   content: attr(data-tooltip-text);
 
-  top: -30px;
+  bottom: 24px;
 
   /* style tooltip */
   background: rgb(20, 20, 20);
   color: rgba(255, 255, 255, 0.9);
-  height: 24px;
-  padding: 0 18px;
+  padding: 5px 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   /* stretch tooltip by content width */
-  white-space: pre;
+  /* max-content would not work in IE */
+  width: max-content;
+  max-width: 300px;
 }
 
 .tooltip:after {
@@ -76,6 +77,7 @@
 .tooltip-right:before,
 .tooltip-right:after {
   top: 50%;
+  bottom: auto;
   left: calc(100% + 15px);
   transform: translateY(-50%);
 }
@@ -90,6 +92,7 @@
 .tooltip-left:before,
 .tooltip-left:after {
   top: 50%;
+  bottom: auto;
   left: -15px;
   transform: translateY(-50%) translateX(-100%);
 }
