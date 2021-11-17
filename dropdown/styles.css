@@ -1,0 +1,14 @@
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 200px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.dropdown-content-open {
+  display: block;
+}
