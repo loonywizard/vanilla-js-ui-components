@@ -22,14 +22,7 @@
   opacity: 0;
 
   /* add animation for appearance */
-  /*
-    TODO: add animation
-    Problem: because width of tooltip is not in integers,
-    arrow covers a less than 1 pixel of tooltip container
-    so animation looks bad
-    Maybe possible solution it to use rem's instead of pixels, see https://codepen.io/kallmanation/pen/VwvJQRO
-  */
-  /* transition: opacity 0.2s ease; */
+  transition: opacity 0.2s ease;
 
   /* disable pointer events above tooltip */
   pointer-events: none;
@@ -42,7 +35,7 @@
   bottom: 24px;
 
   /* style tooltip */
-  background: rgb(20, 20, 20);
+  background: rgb(0, 0, 0, 0.9);
   color: rgba(255, 255, 255, 0.9);
   padding: 5px 18px;
   display: flex;
@@ -64,7 +57,7 @@
   border: 6px solid;
   
   /* top - right - bottom - left */
-  border-color: rgb(20, 20, 20) transparent transparent transparent;
+  border-color: rgb(0, 0, 0, 0.9) transparent transparent transparent;
 }
 
 .tooltip:hover:before,
@@ -86,20 +79,21 @@
   left: calc(100% + 15px - 12px);
 
   /* top - right - bottom - left */
-  border-color: transparent rgb(20, 20, 20) transparent transparent;
+  border-color: transparent rgb(0, 0, 0, 0.9) transparent transparent;
 }
 
 .tooltip-left:before,
 .tooltip-left:after {
   top: 50%;
   bottom: auto;
-  left: -15px;
-  transform: translateY(-50%) translateX(-100%);
+  left: auto;
+  right: calc(100% + 15px);
+  transform: translateY(-50%);
 }
 
 .tooltip-left:after {
-  left: -4px;
+  right: calc(100% + 3px);
 
   /* top - right - bottom - left */
-  border-color: transparent transparent transparent rgb(20, 20, 20);
+  border-color: transparent transparent transparent rgb(0, 0, 0, 0.9);
 }
