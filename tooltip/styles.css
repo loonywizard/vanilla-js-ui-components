@@ -1,5 +1,9 @@
 .tooltip {
   position: relative;
+
+  display: inline-block;
+  margin: 15px 0;
+  text-decoration: underline;
 }
 
 .tooltip:before {
@@ -9,7 +13,8 @@
   left: 50%;
   transform: translateX(-50%);
   visibility: hidden;
-
+  opacity: 0;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
   background: rgba(0, 0, 0, 0.9);
   color: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
@@ -19,8 +24,10 @@
   align-items: center;
   justify-content: center;
   min-width: max-content;
+  pointer-events: none;
 }
 
 .tooltip:hover:before {
   visibility: visible;
+  opacity: 1;
 }
