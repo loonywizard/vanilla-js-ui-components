@@ -44,7 +44,7 @@
   justify-content: center;
   
   /* TODO: stretch tooltip by content width */
-  width: 400px;
+  width: 170px;
 }
 
 .tooltip:after {
