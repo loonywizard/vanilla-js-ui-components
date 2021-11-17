@@ -1,0 +1,26 @@
+.tooltip {
+  position: relative;
+}
+
+.tooltip:before {
+  content: attr(data-tooltip-text);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: hidden;
+
+  background: rgba(0, 0, 0, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  height: 24px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: max-content;
+}
+
+.tooltip:hover:before {
+  visibility: visible;
+}
