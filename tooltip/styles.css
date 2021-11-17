@@ -6,13 +6,14 @@
   text-decoration: underline;
 }
 
-.tooltip:before {
-  /* add content from data-tooltip-text attribute */
-  content: attr(data-tooltip-text);
-  
+/* 
+ * .tooltip:before is tooltip content with background
+ * .tooltip:after is a tooltip arrow 
+ */
+.tooltip:before,
+.tooltip:after {
   /* position tooltip properly centered above hovering element */
   position: absolute;
-  top: -30px;
   left: 50%;
   transform: translateX(-50%);
 
@@ -22,6 +23,16 @@
 
   /* add animation for appearance */
   transition: opacity 0.2s ease, visibility 0.2s ease;
+
+  /* disable pointer events above tooltip */
+  pointer-events: none;
+}
+
+.tooltip:before {
+  /* add content from data-tooltip-text attribute */
+  content: attr(data-tooltip-text);
+
+  top: -30px;
 
   /* style tooltip */
   background: rgba(0, 0, 0, 0.9);
@@ -35,12 +46,23 @@
   
   /* stretch tooltip by content width */
   min-width: max-content;
-
-  /* disable pointer events above tooltip */
-  pointer-events: none;
 }
 
-.tooltip:hover:before {
+/* tooltip arrow */
+.tooltip:after {
+  content: "";
+  
+  top: -6px;
+ 
+  /* the arrow */
+  border: 6px solid;
+  
+  /* top - right - bottom - left */
+  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+}
+
+.tooltip:hover:before,
+.tooltip:hover:after {
   visibility: visible;
   opacity: 1;
 }
