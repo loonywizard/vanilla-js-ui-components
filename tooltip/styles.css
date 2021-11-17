@@ -7,14 +7,23 @@
 }
 
 .tooltip:before {
+  /* add content from data-tooltip-text attribute */
   content: attr(data-tooltip-text);
+  
+  /* position tooltip properly centered above hovering element */
   position: absolute;
   top: -30px;
   left: 50%;
   transform: translateX(-50%);
+
+  /* hide tooltip (display:none doesn't work in pseudo elements) */
   visibility: hidden;
   opacity: 0;
+
+  /* add animation for appearance */
   transition: opacity 0.2s ease, visibility 0.2s ease;
+
+  /* style tooltip */
   background: rgba(0, 0, 0, 0.9);
   color: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
@@ -23,7 +32,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  /* stretch tooltip by content width */
   min-width: max-content;
+
+  /* disable pointer events above tooltip */
   pointer-events: none;
 }
 
