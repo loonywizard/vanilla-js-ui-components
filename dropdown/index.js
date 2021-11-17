@@ -1,6 +1,39 @@
 // TODO:
 // use event delegation!
 
+
+function generateDropdownHTML(numberOfOptions) {
+  const dropdownSection = document.getElementById('dropdown-section')
+
+  const dropdownContainer = document.createElement('div')
+  const dropdownButton = document.createElement('button')
+  const dropdownContent = document.createElement('div')
+  const dropdownOptionsList = document.createElement('ul')
+
+  dropdownContainer.classList.add('dropdown-container')
+  dropdownButton.classList.add('dropdown-button')
+  dropdownContent.classList.add('dropdown-content')
+
+  dropdownButton.innerHTML = `No option chosen: choose one of ${numberOfOptions} options`
+
+  for (let i = 1; i <= numberOfOptions; i++) {
+    const dropdownOption = document.createElement('li')
+
+    dropdownOption.classList.add('dropdown-option')
+    dropdownOption.dataset.optionValue = `option${i}`
+    dropdownOption.tabIndex = 0
+    dropdownOption.innerHTML = `Option ${i}`
+
+    dropdownOptionsList.appendChild(dropdownOption)
+  }
+
+  dropdownContent.appendChild(dropdownOptionsList)
+  dropdownContainer.appendChild(dropdownButton)
+  dropdownContainer.appendChild(dropdownContent)
+  dropdownSection.appendChild(dropdownContainer)
+}
+
+
 function addEventListenersForDropdown(dropdown) {
   const dropdownButton = dropdown.getElementsByClassName('dropdown-button')[0]
   const dropdownContent = dropdown.getElementsByClassName('dropdown-content')[0]
@@ -41,9 +74,10 @@ function addEventListenersForDropdown(dropdown) {
   })
 }
 
+generateDropdownHTML(4)
+generateDropdownHTML(20)
 
 const allDropdownContainers = [...document.getElementsByClassName('dropdown-container')]
-
 allDropdownContainers.forEach(addEventListenersForDropdown)
 
 document.addEventListener('click', function closeDropdownsOnClickOutside(event) {
