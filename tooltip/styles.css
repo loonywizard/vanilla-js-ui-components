@@ -61,7 +61,9 @@
 }
 
 .tooltip:hover:before,
-.tooltip:hover:after {
+.tooltip:hover:after,
+.tooltip:focus:before,
+.tooltip:focus:after {
   visibility: visible;
   opacity: 1;
 }
