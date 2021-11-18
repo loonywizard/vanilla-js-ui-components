@@ -1,0 +1,20 @@
+.progressbar-container {
+  width: 400px;
+  height: 10px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.progressbar-filledbar {
+  background-color: black;
+  height: 8px;
+  width: 0; 
+}
+
+.progressbar-info-block {
+  margin-top: 10px;
+}
+
+.progressbar-info-block button:not(:last-child) {
+  margin-right: 7px;
+}
