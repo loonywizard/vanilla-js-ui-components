@@ -4,7 +4,6 @@ const AUTOCOMPLETE_DICTONARY = [
   'word',
 ]
 
-// TODO: add destructor that will clear all event listeners!
 class Autocomplete {
   constructor(dictonary) {
     // all possible suggestions for autocomplete
@@ -26,7 +25,7 @@ class Autocomplete {
     this.autocompleteInput.classList.add('autocomplete-input')
     this.autocompleteSuggestionsDropdown.classList.add('autocomplete-dropdown')
 
-    this.autocompleteInput.addEventListener('keyup', this.onInputValueChange)
+    this.autocompleteInput.addEventListener('input', this.onInputValueChange)
     this.autocompleteInput.addEventListener('focus', this.onInputFocus)
     
     document.addEventListener('click', this.onClickOutside)
@@ -76,7 +75,6 @@ class Autocomplete {
 
       htmlSuggestion.innerHTML = suggestion
       htmlSuggestion.classList.add('autocomplete-suggestion-item')
-      // TODO! clear all previous event listeners!
       htmlSuggestion.addEventListener('click', () => this.onSuggestionClick(suggestion))
 
       this.autocompleteSuggestionsDropdown.appendChild(htmlSuggestion)
