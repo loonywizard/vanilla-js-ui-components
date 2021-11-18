@@ -74,6 +74,7 @@ class Autocomplete {
 
       htmlSuggestion.innerHTML = suggestion
       htmlSuggestion.classList.add('autocomplete-suggestion-item')
+      // TODO! clear all previous event listeners!
       htmlSuggestion.addEventListener('click', () => this.onSuggestionClick(suggestion))
 
       this.autocompleteSuggestionsDropdown.appendChild(htmlSuggestion)
