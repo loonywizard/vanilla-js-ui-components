@@ -21,6 +21,7 @@ START button starts progress bar
 
 // TODO: add pecentage display block
 
+// TODO get width of progress bar by accessing css properties
 const PROGRESS_BAR_WIDTH = 400
 const PROGRESS_BAR_BORDER_WIDTH = 1
 

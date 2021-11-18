@@ -15,3 +15,7 @@ html, body {
   padding: 0 10px 40px;
   margin: 0 auto;
 }
+
+section {
+  margin-bottom: 70px;
+}
