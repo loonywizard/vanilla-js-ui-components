@@ -20,6 +20,8 @@ class Autocomplete {
     this.autocompleteInput = document.createElement('input')
     this.autocompleteSuggestionsDropdown = document.createElement('div')
 
+    this.autocompleteInput.placeholder = 'start typing...'
+
     this.autocompleteContainer.classList.add('autocomplete-container')
     this.autocompleteInput.classList.add('autocomplete-input')
     this.autocompleteSuggestionsDropdown.classList.add('autocomplete-dropdown')
