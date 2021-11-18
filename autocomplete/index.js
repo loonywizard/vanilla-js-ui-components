@@ -42,7 +42,7 @@ class Autocomplete {
   onInputFocus = () => {
     this.setCurrentSuggestions()
     this.setSuggestions()
-    this.openSuggestionsDropdown()
+    if (this.suggestions.length) this.openSuggestionsDropdown()
   }
 
   onClickOutside = (event) => {
