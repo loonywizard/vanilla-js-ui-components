@@ -10,9 +10,7 @@ const MODAL_CONTENT = {
   `,
 }
 
-// TODO: close on click outside
 // TODO: add animation for appereance
-// TODO: add example with long content, so modal height will be more than 100% of window height
 function openModal(buttonHtmlElement) {
   /*
   
@@ -23,6 +21,7 @@ function openModal(buttonHtmlElement) {
 
   */
   const modalContent = MODAL_CONTENT[buttonHtmlElement.dataset.modalContent]
+  const shouldCloseOnClickOutside = buttonHtmlElement.dataset.closeOnClickOutside !== 'false'
 
   const modalOverlay = document.createElement('div')
   const modalContainer = document.createElement('div')
@@ -41,6 +40,15 @@ function openModal(buttonHtmlElement) {
   closeModalButton.innerHTML = 'Close Modal'
 
   closeModalButton.addEventListener('click', closeModal)
+
+  if (shouldCloseOnClickOutside) {
+    modalOverlay.addEventListener('click', function handleClickOutside(event) {
+      if (event.target === modalContainer) return
+      if (!event.target.contains(modalContainer)) return
+
+      closeModal()
+    })
+  }
 
   modalContainer.append(modalTextWrapper, closeModalButton)
   modalOverlay.append(modalContainer)
