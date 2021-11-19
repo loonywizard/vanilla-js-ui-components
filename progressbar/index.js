@@ -21,10 +21,6 @@ START button starts progress bar
 
 // TODO: add pecentage display block
 
-// TODO get width of progress bar by accessing css properties
-const PROGRESS_BAR_WIDTH = 400
-const PROGRESS_BAR_BORDER_WIDTH = 1
-
 class ProgressBar {
   constructor() {
     this.updateTimeoutId = null
@@ -117,9 +113,20 @@ class ProgressBar {
   }
 
   updateProgressBarFilledBarBlock = () => {
+    const progressBarContainerStyles = window.getComputedStyle(this.progressBarContainer)
+
+    const progressBarWidth = parseInt(progressBarContainerStyles['width'])
+    const progressBarLeftBorderWidth = parseInt(progressBarContainerStyles['border-left-width'])
+    const progressBarRightBorderWidth = parseInt(progressBarContainerStyles['border-right-width'])
+
+    const progressBarFillBarMaxWidth = (
+      progressBarWidth
+      - progressBarLeftBorderWidth
+      - progressBarRightBorderWidth
+    )
+
     const widthInPixels = Math.floor(
-      this.progressBarValue *
-      ((PROGRESS_BAR_WIDTH - 2 * PROGRESS_BAR_BORDER_WIDTH) / 100)
+      this.progressBarValue * (progressBarFillBarMaxWidth / 100)
     )
 
     this.progressBarFilledBar.style.width = `${widthInPixels}px`
