@@ -23,3 +23,9 @@
   background-color: white;
   padding: 40px 30px;
 }
+
+.modal-text-wrapper {
+  overflow-y: scroll;
+  max-height: calc(100vh - 200px);
+  margin-bottom: 20px;
+}
