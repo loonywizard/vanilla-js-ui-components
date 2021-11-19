@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="dropdown/styles.css" type="text/css"></link>
   <link rel="stylesheet" href="autocomplete/styles.css" type="text/css"></link>
   <link rel="stylesheet" href="progressbar/styles.css" type="text/css"></link>
+  <link rel="stylesheet" href="modal/styles.css" type="text/css"></link>
 </head>
 <body>
 <div class="page-wrapper">
@@ -104,9 +105,42 @@
     <!-- progress bar is added by JavaScript code: progressbar/index.js -->
   </section>
 
+
+  <!--
+    Modal
+  -->
+  <section id="modal-section">
+    <h2>Modal</h2>
+
+    <p>
+      This is Modal window component. Click on the buttons below to open modals
+      <br/>
+      Modal supports data attribute data-close-on-click-outside, which is by default true
+    </p>
+
+    <div class="open-modal-button-wrapper">
+      <button data-open-modal-button data-modal-content="helloWorld">
+        Open default modal
+      </button>
+    </div>
+
+    <div class="open-modal-button-wrapper">
+      <button data-open-modal-button data-modal-content="longText">
+        Open long-text modal
+      </button>
+    </div>
+
+    <div class="open-modal-button-wrapper">
+      <button data-open-modal-button data-modal-content="helloWorld" data-close-on-click-outside="false">
+        Open modal which cannot be closed by clicking outside
+      </button>
+    </div>
+  </section>
+
   <script src="dropdown/index.js"></script>
   <script src="autocomplete/index.js"></script>
   <script src="progressbar/index.js"></script>
+  <script src="modal/index.js"></script>
 </div>
 </body>
 </html>
