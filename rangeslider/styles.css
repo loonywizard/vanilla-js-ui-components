@@ -24,19 +24,26 @@
 }
 
 /* track */
-.range-slider-wrapper input[type="range"]::-webkit-slider-runnable-track {
-  background: none;
-  height: 100%;
-  width: 100%;
+.range-slicer-track {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* init values will be set by javascript */
+  left: 0px;
+  right: 0px;
+  background: #0F99F5;
 }
 
 
 /* thumb */
 .range-slider-wrapper input[type="range"]::-webkit-slider-thumb {
+  position: relative;
   background-color: black;
   border: none;
   border-radius: 0;
   pointer-events: auto;
   width: 20px; 
   height: 20px;
+  z-index: 2;
 }
