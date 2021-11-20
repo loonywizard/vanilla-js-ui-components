@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="progressbar/styles.css" type="text/css"></link>
   <link rel="stylesheet" href="modal/styles.css" type="text/css"></link>
   <link rel="stylesheet" href="switch/styles.css" type="text/css"></link>
+  <link rel="stylesheet" href="rangeslider/styles.css" type="text/css"></link>
 </head>
 <body>
 <div class="page-wrapper">
@@ -166,6 +167,30 @@
       Disabled Checked Switch
       <input type="checkbox" role="switch" id="disabled-checked-switch" disabled checked/>
     </label>
+  </section>
+
+
+  <!--
+    Range Slider
+  -->
+  <section id="range-slider">
+    <h2>Range Slider</h2>
+
+    <p>
+      This is a Range Slider with 2 handle pickers
+      <br/>
+      This component was made by following this
+      <a href="https://css-tricks.com/multi-thumb-sliders-particular-two-thumb-case/" target="_blank">tutorial on CSS Tricks</a>
+      by
+      <a href="https://twitter.com/anatudor" target="_blank">Ana Tudor</a>
+    </p>
+
+    <!-- style="--handleA: 20; --handleB: 70; --min: 0; --max: 100" -->
+    <div class="range-slider-wrapper" role="group">
+      <!-- TODO: add hidden labels for screen readers -->
+      <input id="range-slider-handle-a" type="range" min="0" max="100" value="20" />
+      <input id="range-slider-handle-b" type="range" min="0" max="100" value="70" />
+    </div>
   </section>
 
   <script src="dropdown/index.js"></script>
