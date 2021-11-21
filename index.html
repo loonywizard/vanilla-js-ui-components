@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vanilla JS UI Components</title>
   <link rel="stylesheet" href="index.css" type="text/css"></link>
+  <link rel="stylesheet" href="theme.css" type="text/css"></link>
   <link rel="stylesheet" href="tooltip/styles.css" type="text/css"></link>
   <link rel="stylesheet" href="dropdown/styles.css" type="text/css"></link>
   <link rel="stylesheet" href="autocomplete/styles.css" type="text/css"></link>
@@ -15,8 +16,33 @@
   <link rel="stylesheet" href="rangeslider/styles.css" type="text/css"></link>
 </head>
 <body>
+
+<!-- 
+
+load this first, so user doesn't see blink in theme change
+
+further optimization would be extracting setThemeFromLocalStorage() method and loading only this here,
+and client code for ThemeSwitcher above
+-->
+<script src="themeswitcher/index.js"></script>
+
 <div class="page-wrapper">
   <h1>Vanilla JS UI Components</h1>
+
+
+  <!--
+    Theme Switcher
+  -->
+  <section>
+    <h2>Theme Switcher</h2>
+
+    <p>
+      This is a ThemeSwitcher component implemented with HTML radio group
+      <br />
+      User choice is remembered in localStorage and used 
+    </p>
+  </section>
+
 
   <!--
     TOOLTIP

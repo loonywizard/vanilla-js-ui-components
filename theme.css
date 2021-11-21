@@ -1,0 +1,23 @@
+.theme-light {
+  --color-background: #fff;
+  --color-header: #000;
+  --color-text: #000;
+}
+
+.theme-dark {
+  --color-background: #121212;
+  --color-header: #eee;
+  --color-text: #ddd;
+}
+
+body {
+  background-color: var(--color-background);
+}
+
+h1, h2 {
+  color: var(--color-header);
+}
+
+p, span, div {
+  color: var(--color-text);
+}
