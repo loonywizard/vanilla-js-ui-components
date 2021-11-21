@@ -38,6 +38,7 @@ class RangeSlider {
   updateSliderTrack = () => {
     const computedStyles = window.getComputedStyle(this.firstInput)
 
+    // we can't access ::after elements styles via DOM
     const INPUT_HANDLE_WIDTH = 20
     
     // subtract two halfs of handle width - 2 * 1/2 = 1
