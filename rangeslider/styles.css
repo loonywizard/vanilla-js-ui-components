@@ -1,7 +1,7 @@
 .range-slider-wrapper {
   position: relative;
   display: grid;
-  grid-template-rows: 20px;
+  grid-template-rows: 20px 20px;
 
   width: 100%;
   max-width: 400px;
@@ -10,7 +10,7 @@
 
 .range-slider-wrapper input[type="range"] {
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 2;
 
   background: none;
   pointer-events: none;
@@ -23,8 +23,13 @@
   -webkit-appearance: none;
 }
 
+/* info */
+.range-slider-info {
+  z-index: 3;
+}
+
 /* track */
-.range-slicer-track {
+.range-slider-track {
   content: "";
   position: absolute;
   top: 0;

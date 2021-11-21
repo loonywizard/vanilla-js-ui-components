@@ -7,14 +7,15 @@ class RangeSlider {
     this.firstInput = firstInput
     this.secondInput = secondInput
     
-    this.inputTrack = rangeSliderContainer.getElementsByClassName('range-slicer-track')[0]
+    this.inputTrack = rangeSliderContainer.getElementsByClassName('range-slider-track')[0]
+    this.infoPanel = rangeSliderContainer.getElementsByClassName('range-slider-info')[0]
 
     this.firstInput.addEventListener('input', (event) => {
       if (parseInt(event.target.value) > parseInt(this.secondInput.value)) {
         this.firstInput.value = this.secondInput.value
       }
 
-      this.updateSliderTrack()
+      this.updateInfoAndTrack()
     })
 
     this.secondInput.addEventListener('input', (event) => {
@@ -22,10 +23,16 @@ class RangeSlider {
         this.secondInput.value = this.firstInput.value
       }
 
-      this.updateSliderTrack()
+      this.updateInfoAndTrack()
     })
 
+    this.updateInfoAndTrack()
+  }
+
+  // since these operations are often called toghether it is easier to combine them into one method
+  updateInfoAndTrack = () => {
     this.updateSliderTrack()
+    this.updateInfoPanel()
   }
 
   updateSliderTrack = () => {
@@ -43,6 +50,13 @@ class RangeSlider {
     // TODO use handles size here (if possible)
     this.inputTrack.style.left = `${firstInputValue * widthToValuesLengthRation}px`
     this.inputTrack.style.right = `${inputWidth - secondInputValue * widthToValuesLengthRation}px`
+  }
+
+  updateInfoPanel = () => {
+    const firstInputValue = parseInt(this.firstInput.value)
+    const secondInputValue = parseInt(this.secondInput.value)
+
+    this.infoPanel.innerHTML = `a = ${firstInputValue}, b = ${secondInputValue}`
   }
 }
 
