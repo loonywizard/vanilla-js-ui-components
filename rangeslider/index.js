@@ -1,9 +1,13 @@
 class RangeSlider {
-  constructor() {
-    this.firstInput = document.getElementById('range-slider-handle-a')
-    this.secondInput = document.getElementById('range-slider-handle-b')
-    // TODO: refactor getting this element
-    this.inputTrack = document.getElementsByClassName('range-slicer-track')[0]
+  constructor(rangeSliderId) {
+    const rangeSliderContainer = document.getElementById(rangeSliderId)
+
+    const [firstInput, secondInput] = rangeSliderContainer.getElementsByTagName('input')
+
+    this.firstInput = firstInput
+    this.secondInput = secondInput
+    
+    this.inputTrack = rangeSliderContainer.getElementsByClassName('range-slicer-track')[0]
 
     this.firstInput.addEventListener('input', (event) => {
       if (parseInt(event.target.value) > parseInt(this.secondInput.value)) {
@@ -42,5 +46,4 @@ class RangeSlider {
   }
 }
 
-// in order to be used again provide ids of elements as arguments
-const rangeSlider = new RangeSlider()
+const rangeSlider = new RangeSlider('range-slider')
