@@ -10,6 +10,14 @@
   --color-text: #ddd;
 }
 
+/*
+  in order to get rid of the first initial transition from light to dark (if dark theme was detected)
+  we need to add transition property only after background-color and color properties were changed by className change
+*/
+.theme-transition {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
 body {
   background-color: var(--color-background);
 }
