@@ -1,20 +1,22 @@
 .range-slider-wrapper {
   position: relative;
-  display: grid;
-  grid-template-rows: 20px 20px;
-
   width: 100%;
   max-width: 400px;
+}
+
+.range-slider-inputs-wrapper {
+  display: grid;
+  grid-template-rows: 20px;
   background-color: #ccc;
 }
 
 .range-slider-wrapper input[type="range"] {
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 1;
 
   background: none;
   pointer-events: none;
-  margin: 0;
+  margin: 0 -10px;
 }
 
 .range-slider-wrapper input[type="range"]::-webkit-slider-runnable-track,
@@ -32,8 +34,8 @@
 .range-slider-track {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: -10px;
+  height: 30px;
   /* init values will be set by javascript */
   left: 0px;
   right: 0px;
