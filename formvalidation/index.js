@@ -8,37 +8,65 @@ function getErrorFromValidations(value, validationsRules) {
   return null
 }
 
-
 class MyFormValidator {
   constructor(formId, validationRules) {
     this.formElement = document.getElementById(formId)
     this.validationRules = validationRules
 
+    this.inputs = [...this.formElement.getElementsByTagName('input')]
+    this.errorContainers = [...this.formElement.getElementsByClassName('error-container')]
+
     this.formElement.addEventListener('submit', this.onFormSubmit)
+    this.inputs.forEach((input) => {
+      input.addEventListener('focus', () => {
+        const errorContainer = this.getErrorContainerByInputName(input.name)
+        
+        this.removeErrorFromErrorContainer(errorContainer)
+      })
+
+      input.addEventListener('blur', () => {
+        const errorContainer = this.getErrorContainerByInputName(input.name)
+        const validations = this.validationRules[input.name]
+        const errorMessage = getErrorFromValidations(input.value, validations)
+
+        if (errorMessage) {
+          this.addErrorToErrorContainer(errorContainer, errorMessage)
+        }
+      })
+    })
+  }
+
+  getErrorContainerByInputName = (inputName) => {
+    return this.errorContainers.find((element) => element.dataset.inputName === inputName)
+  }
+
+  addErrorToErrorContainer = (errorContainer, errorMessage) => {
+    errorContainer.innerHTML = errorMessage
+    errorContainer.classList.remove('error-container-hidden')
+  }
+  
+  removeErrorFromErrorContainer = (errorContainer) => {
+    errorContainer.classList.add('error-container-hidden')
+    errorContainer.innerHTML = ''
   }
 
   onFormSubmit = (event) => {
     event.preventDefault()
 
     let hasError = false
-
-    const inputs = [...this.formElement.getElementsByTagName('input')]
-    const errorContainers = [...this.formElement.getElementsByClassName('error-container')]
     
-    inputs.forEach((inputElement) => {
+    this.inputs.forEach((inputElement) => {
       const validations = this.validationRules[inputElement.name]
       const errorMessage = getErrorFromValidations(inputElement.value, validations)
 
-      const errorContainer = errorContainers.find((element) => element.dataset.inputName === inputElement.name)
+      const errorContainer = this.getErrorContainerByInputName(inputElement.name)
 
       if (errorMessage) {
         hasError = true
 
-        errorContainer.innerHTML = errorMessage
-        errorContainer.classList.remove('error-container-hidden')
+        this.addErrorToErrorContainer(errorContainer, errorMessage)
       } else {
-        errorContainer.classList.add('error-container-hidden')
-        errorContainer.innerHTML = ''
+        this.removeErrorFromErrorContainer(errorContainer)
       }
     })
 
