@@ -1,7 +1,22 @@
 const AUTOCOMPLETE_DICTONARY = [
-  'hello',
-  'world',
-  'word',
+  'Amsterdam',
+  'Berlin',
+  'Moscow',
+  'London',
+  'Rome',
+  'Paris',
+  'New York',
+  'Los Angeles',
+  'Vancouver',
+  'Antwerpen',
+  'Arkhangelsk',
+  'Perm',
+  'Babaevo',
+  'Vologda',
+  'Toronto',
+  'Washington',
+  'Madrid',
+  'Tokio',
 ]
 
 class Autocomplete {
@@ -19,7 +34,7 @@ class Autocomplete {
     this.autocompleteInput = document.createElement('input')
     this.autocompleteSuggestionsDropdown = document.createElement('div')
 
-    this.autocompleteInput.placeholder = 'start typing...'
+    this.autocompleteInput.placeholder = 'Select your destination'
 
     this.autocompleteContainer.classList.add('autocomplete-container')
     this.autocompleteInput.classList.add('autocomplete-input')
@@ -39,7 +54,9 @@ class Autocomplete {
   }
 
   setCurrentSuggestions = () => {
-    this.suggestions = this.dictonary.filter((dictEntry) => (dictEntry.startsWith(this.inputValue)))
+    this.suggestions = this.dictonary.filter((dictEntry) => (
+      dictEntry.toLowerCase().startsWith(this.inputValue.toLocaleLowerCase())
+    ))
   }
 
   onInputFocus = () => {
@@ -75,7 +92,10 @@ class Autocomplete {
     this.suggestions.forEach((suggestion) => {
       const htmlSuggestion = document.createElement('div')
 
-      htmlSuggestion.innerHTML = suggestion
+      const boldText = suggestion.slice(0, this.inputValue.length)
+      const regularText = suggestion.slice(this.inputValue.length)
+      
+      htmlSuggestion.innerHTML = `<b>${boldText}</b>${regularText}`
       htmlSuggestion.dataset.suggestionValue = suggestion
       htmlSuggestion.classList.add('autocomplete-suggestion-item')
 
@@ -87,7 +107,13 @@ class Autocomplete {
     }
 
     this.autocompleteDropdownClickListener = (event) => {
-      this.onSuggestionClick(event.target.dataset.suggestionValue)
+      let currentNode = event.target
+
+      while (!currentNode.dataset.suggestionValue) {
+        currentNode = currentNode.parentElement
+      }
+
+      this.onSuggestionClick(currentNode.dataset.suggestionValue)
     }
 
     this.autocompleteSuggestionsDropdown.addEventListener('click', this.autocompleteDropdownClickListener)
