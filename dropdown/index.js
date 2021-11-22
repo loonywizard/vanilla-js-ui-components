@@ -60,17 +60,22 @@ function addEventListenersForDropdown(dropdown) {
     }
   })
 
-  dropdownOptions.forEach((dropdownOption) => {
-    dropdownOption.addEventListener('click', function onDropdownOptionClick(event) {
-      event.stopPropagation()
+  // event delegation here!
+  dropdownContent.addEventListener('click', (event) => {
+    event.stopPropagation()
 
-      dropdownContent.classList.remove('dropdown-content-open')
-      dropdownOptions.forEach(
-        (_innerDropdownOption) => _innerDropdownOption.classList.remove('selected-dropdown-option')
-      )
-      dropdownOption.classList.add('selected-dropdown-option')
-      dropdownButton.innerHTML = `Selected option: ${dropdownOption.dataset.optionValue}`
+    const selectedValue = event.target.dataset.optionValue
+
+    dropdownContent.classList.remove('dropdown-content-open')
+    dropdownOptions.forEach((dropdownOption) => {
+      if (dropdownOption.dataset.optionValue === selectedValue) {
+        dropdownOption.classList.add('selected-dropdown-option')
+      } else {
+        dropdownOption.classList.remove('selected-dropdown-option')
+      }
     })
+    
+    dropdownButton.innerHTML = `Selected option: ${selectedValue}`
   })
 }
 
