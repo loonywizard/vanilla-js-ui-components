@@ -22,3 +22,12 @@
 .form-validation-example button[type="submit"] {
   max-width: 200px;
 }
+
+.error-container {
+  margin-top: -10px;
+  color: red;
+}
+
+.error-container-hidden {
+  display: none;
+}

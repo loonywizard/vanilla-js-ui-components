@@ -234,7 +234,7 @@ and client code for ThemeSwitcher above
     <h2>Form Validation</h2>
 
     <p>
-      This is an example of form alidation
+      This is an example of form validation
       <!-- TODO add more text -->
     </p>
 
@@ -243,14 +243,20 @@ and client code for ThemeSwitcher above
         <input type="text" value="" name="name" placeholder="Vladimir Nikitin" />
         Your Name
       </label>
+      <div class="error-container error-container-hidden" data-input-name="name"></div>
+      
       <label>
         <input type="text" name="username" value="" placeholder="loonywizard">
         Username
       </label>
+      <div class="error-container error-container-hidden" data-input-name="username"></div>
+
       <label>
         <input type="number" min="0" max="200" name="age" value="" placeholder="23">
         Your age
       </label>
+      <div class="error-container error-container-hidden" data-input-name="age"></div>
+
       <button type="submit">Submit</button>
     </form>
   </section>

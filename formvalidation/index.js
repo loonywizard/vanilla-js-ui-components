@@ -20,14 +20,31 @@ class MyFormValidator {
   onFormSubmit = (event) => {
     event.preventDefault()
 
+    let hasError = false
+
     const inputs = [...this.formElement.getElementsByTagName('input')]
+    const errorContainers = [...this.formElement.getElementsByClassName('error-container')]
     
     inputs.forEach((inputElement) => {
       const validations = this.validationRules[inputElement.name]
       const errorMessage = getErrorFromValidations(inputElement.value, validations)
 
-      console.log(errorMessage)
+      const errorContainer = errorContainers.find((element) => element.dataset.inputName === inputElement.name)
+
+      if (errorMessage) {
+        hasError = true
+
+        errorContainer.innerHTML = errorMessage
+        errorContainer.classList.remove('error-container-hidden')
+      } else {
+        errorContainer.classList.add('error-container-hidden')
+        errorContainer.innerHTML = ''
+      }
     })
+
+    if (!hasError) {
+      console.log('Successfully submitted!')
+    }
   }
 }
 
