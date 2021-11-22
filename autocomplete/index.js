@@ -33,6 +33,8 @@ class Autocomplete {
     this.autocompleteContainer.appendChild(this.autocompleteInput)
     this.autocompleteContainer.appendChild(this.autocompleteSuggestionsDropdown)
 
+    this.autocompleteDropdownClickListener = null
+
     return this.autocompleteContainer
   }
 
@@ -74,11 +76,21 @@ class Autocomplete {
       const htmlSuggestion = document.createElement('div')
 
       htmlSuggestion.innerHTML = suggestion
+      htmlSuggestion.dataset.suggestionValue = suggestion
       htmlSuggestion.classList.add('autocomplete-suggestion-item')
-      htmlSuggestion.addEventListener('click', () => this.onSuggestionClick(suggestion))
 
       this.autocompleteSuggestionsDropdown.appendChild(htmlSuggestion)
     })
+
+    if (this.autocompleteDropdownClickListener !== null) {
+      this.autocompleteSuggestionsDropdown.removeEventListener('click', this.autocompleteDropdownClickListener)
+    }
+
+    this.autocompleteDropdownClickListener = (event) => {
+      this.onSuggestionClick(event.target.dataset.suggestionValue)
+    }
+
+    this.autocompleteSuggestionsDropdown.addEventListener('click', this.autocompleteDropdownClickListener)
   }
 
   onSuggestionClick = (suggestion) => {

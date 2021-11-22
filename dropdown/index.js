@@ -1,7 +1,3 @@
-// TODO:
-// use event delegation!
-
-
 function generateDropdownHTML(numberOfOptions) {
   const dropdownSection = document.getElementById('dropdown-section')
 
