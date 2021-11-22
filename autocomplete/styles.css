@@ -17,9 +17,17 @@
   width: 100%;
 }
 
+.autocomplete-suggestion-item {
+  padding: 5px 8px;
+}
+
 .autocomplete-suggestion-item:hover {
   background-color: rgb(230, 230, 230);
   cursor: pointer;
+}
+
+.autocomplete-suggestion-item:not(:last-child) {
+  border-bottom: 1px solid #ddd;
 }
 
 .autocomplete-dropdown-open {
