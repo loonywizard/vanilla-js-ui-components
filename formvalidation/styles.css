@@ -1,0 +1,24 @@
+.form-validation-example {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100%;
+  max-width: 320px;
+
+  border: 1px solid #ccc;
+  padding: 20px 10px;
+}
+
+.form-validation-example > label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-validation-example > label > input {
+  flex-basis: 200px;
+}
+
+.form-validation-example button[type="submit"] {
+  max-width: 200px;
+}

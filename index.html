@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="modal/styles.css" type="text/css"></link>
   <link rel="stylesheet" href="switch/styles.css" type="text/css"></link>
   <link rel="stylesheet" href="rangeslider/styles.css" type="text/css"></link>
+  <link rel="stylesheet" href="formvalidation/styles.css" type="text/css"></link>
 </head>
 <body>
 
@@ -214,7 +215,6 @@ and client code for ThemeSwitcher above
       This is a Range Slider with 2 handle pickers
     </p>
 
-    <!-- style="--handleA: 20; --handleB: 70; --min: 0; --max: 100" -->
     <div class="range-slider-wrapper" role="group" id="range-slider">
       <!-- TODO: add hidden labels for screen readers -->
       <div class="range-slider-inputs-wrapper">
@@ -225,6 +225,34 @@ and client code for ThemeSwitcher above
 
       <div class="range-slider-info"></div>
     </div>
+  </section>
+
+  <!--
+    Form validation
+  -->
+  <section>
+    <h2>Form Validation</h2>
+
+    <p>
+      This is an example of form alidation
+      <!-- TODO add more text -->
+    </p>
+
+    <form class="form-validation-example" id="form-validation-example">
+      <label>
+        <input type="text" value="" name="name" placeholder="Vladimir Nikitin" />
+        Your Name
+      </label>
+      <label>
+        <input type="text" name="username" value="" placeholder="loonywizard">
+        Username
+      </label>
+      <label>
+        <input type="number" min="0" max="200" name="age" value="" placeholder="23">
+        Your age
+      </label>
+      <button type="submit">Submit</button>
+    </form>
   </section>
 
   <script src="dropdown/index.js"></script>
